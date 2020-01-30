@@ -26,7 +26,6 @@ class C_data extends CI_Controller {
            'authsession' => json_decode($this->curl->simple_get($this->API.'/authsession.php'),1),
            'authtenant' => json_decode($this->curl->simple_get($this->API.'/authtenant.php'),1),
            'bridgelog' => json_decode($this->curl->simple_get($this->API.'/bridgelog.php'),1),
-           'bridgelog2' => json_decode($this->curl->simple_get($this->API.'/bridgelog2.php'),1),
            'bridgesession' => json_decode($this->curl->simple_get($this->API.'/bridgesession.php'),1),
            'gpscontact' => json_decode($this->curl->simple_get($this->API.'/gpscontact.php'),1)
         );
@@ -36,3 +35,5 @@ class C_data extends CI_Controller {
 }
 
 ?>
+
+<!-- 'bridgelog2' => json_decode($this->curl->simple_get($this->API.'/bridgelog2.php'),1), -->

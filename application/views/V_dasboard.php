@@ -2,35 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
+    <!-- BOOTSTRAPE -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
 <body>
+    <div class="jumbotron" style="position: fixed; top: 0; width: 100%; padding: 0; font-size: 100px; text-align: center;">
+        <span id="count-up">0:00</span>
+    </div>
+
+    <!-- SCRIPT TIME -->
+    <script>
+            var min    = 0;
+            var second = 00;
+            var zeroPlaceholder = 0;
+            var counterId = setInterval(function(){
+                            countUp();
+                          }, 1000);
+
+            function countUp () {
+                second++;
+                if(second == 59){
+                    second = 00;
+                    min = min + 1;
+                }
+                if(second == 10){
+                      zeroPlaceholder = '';
+                }else
+                if(second == 00){
+                    zeroPlaceholder = 0;
+                }
+
+                  document.getElementById("count-up").innerText = min+':'+zeroPlaceholder+second;
+            }
+    </script>
+
+
     <!-- Auth Session -->
-    <table>
+    <table class="table table-bordered" style="margin-top: 150px;">
         <thead>
             <tr>
+                <th>No</th>
                 <th>Id</th>
                 <th>Ip Address</th>
                 <th>Timestamp</th>
                 <th>Data</th>
             </tr>
         </thead>
-        <?php foreach ($authsession['Auth_Session'] as $as) { ?>
+        <?php $no = 1; foreach ($authsession['Auth_Session'] as $as) { ?>
         <tbody>
             <tr>
+                <td><?php echo $no; ?></td>
                 <td><?php echo $as['id']; ?></td>
                 <td><?php echo $as['ip_address']; ?></td>
                 <td><?php echo $as['timestamp']; ?></td>
                 <td><?php echo $as['data']; ?></td>
             </tr>
         </tbody>
-        <?php } ?>
+        <?php $no++; } ?>
     </table>
-    <br>
+    <br> -->
     <!-- Auth Tenant -->
-    <table>
+<!--     <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Id</th>
@@ -52,9 +92,9 @@
         </tbody>
         <?php } ?>
     </table>
-    <br>
+    <br> -->
     <!-- Bridge Log -->
-    <table>
+    <!-- <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Id</th>
@@ -81,10 +121,10 @@
             </tr>
         </tbody>
         <?php } ?>
-    </table>
+    </table> -->
     <!-- bridge log 2 -->
     <br>
-    <table>
+    <!-- <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Id</th>
@@ -112,9 +152,9 @@
         </tbody>
         <?php } ?>
     </table>
-    <br>
+    <br> -->
     <!-- Bridge Session -->
-    <table>
+<!--     <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Id</th>
@@ -142,9 +182,9 @@
         </tbody>
         <?php } ?>
     </table>
-    <br>
+    <br> -->
     <!-- Gps Contact -->
-    <table>
+<!--     <table class="table table-bordered">
         <thead>
             <tr>
                 <th>gpscar_id</th>
@@ -201,6 +241,13 @@
             </tr>
         </tbody>
         <?php } ?>
-    </table>
+    </table> -->
+
+
+<!-- SCRIPT BOOTSTRAPE -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </body>
 </html>
