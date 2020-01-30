@@ -5,14 +5,14 @@ class C_slim extends CI_Controller {
     function __construct() {
         parent::__construct();
         // $this->API="http://localhost:8000";
-        $this->API="http://localhost:8000";
+        $this->API="http://localhost:8080";
     }
 
-    // Menampilkan data LUMEN
+    // Menampilkan data Slim
     public function index() {
 
         $data = array(
-           'bridgelog' => json_decode($this->curl->simple_get($this->API.'/bridgelog'),1)
+           'bridgelog' => json_decode($this->curl->simple_get($this->API.'/bridgelog/'),1)
         );
 
         $this->load->view('V_slim',$data);

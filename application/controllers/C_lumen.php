@@ -5,7 +5,7 @@ class C_lumen extends CI_Controller {
     function __construct() {
         parent::__construct();
         // $this->API="http://localhost:8000";
-        $this->API="http://localhost:8000";
+        $this->API="http://localhost:6060";
     }
 
     // Menampilkan data LUMEN
