@@ -5,7 +5,7 @@ class C_slim extends CI_Controller {
     function __construct() {
         parent::__construct();
         // $this->API="http://localhost:8000";
-        $this->API="http://localhost:8080";
+        $this->API="http://localhost/GitHub/ws_slim/public/index.php";
     }
 
     // Menampilkan data Slim

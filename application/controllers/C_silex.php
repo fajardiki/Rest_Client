@@ -5,7 +5,7 @@ class C_silex extends CI_Controller {
     function __construct() {
         parent::__construct();
         // $this->API="http://localhost:8000";
-        $this->API="http://localhost:7070";
+        $this->API="http://localhost/GitHub/ws_silex/web/index.php";
     }
 
     // Menampilkan data LUMEN

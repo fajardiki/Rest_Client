@@ -49,7 +49,7 @@
 </head>
 <body>
     <div class="container-fluid bg-info pb-2">
-        <a href="<?php echo site_url().'C_menu' ?>">
+        <a href="<?php echo base_url().'C_menu' ?>">
         <img class="img-fluid" width="170" src="assets/img/analisa-seo-indonesia.png" style="position: absolute; margin-top: 5px; z-index:1;">
         </a>
         <img class="img-fluid" id="logo" src="assets/img/silex.png" width="170" style="position: absolute; right:10px; margin-top: 10px; border-radius: 50%; border-style: solid; border-color: white">

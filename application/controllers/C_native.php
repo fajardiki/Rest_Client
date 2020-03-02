@@ -18,42 +18,42 @@ class C_native extends CI_Controller {
         $this->load->view('V_native',$data);
     }
 
-    public function selectdata() {
-        // $data = array(
-        //    'authsession' => ,
-        //    'authtenant' => json_decode($this->curl->simple_get($this->API.'/authtenant.php'),1),
-        //    'bridgelog' => json_decode($this->curl->simple_get($this->API.'/bridgelog.php'),1),
-        //    'bridgesession' => json_decode($this->curl->simple_get($this->API.'/bridgesession.php'),1),
-        //    'gpscontact' => json_decode($this->curl->simple_get($this->API.'/gpscontact.php'),1)
-        // );
+    // public function selectdata() {
+    //     // $data = array(
+    //     //    'authsession' => ,
+    //     //    'authtenant' => json_decode($this->curl->simple_get($this->API.'/authtenant.php'),1),
+    //     //    'bridgelog' => json_decode($this->curl->simple_get($this->API.'/bridgelog.php'),1),
+    //     //    'bridgesession' => json_decode($this->curl->simple_get($this->API.'/bridgesession.php'),1),
+    //     //    'gpscontact' => json_decode($this->curl->simple_get($this->API.'/gpscontact.php'),1)
+    //     // );
 
-        // Auth Session
-        $dataas = json_decode($this->curl->simple_get($this->API.'/authsession.php'),1);
-        $auth_session = $dataas['Auth_Session'];
+    //     // Auth Session
+    //     $dataas = json_decode($this->curl->simple_get($this->API.'/authsession.php'),1);
+    //     $auth_session = $dataas['Auth_Session'];
 
-        // Auth Tenant
-        $dataat = json_decode($this->curl->simple_get($this->API.'/authtenant.php'),1);
-        $auth_tenant = $dataat['Auth_Tenant'];
+    //     // Auth Tenant
+    //     $dataat = json_decode($this->curl->simple_get($this->API.'/authtenant.php'),1);
+    //     $auth_tenant = $dataat['Auth_Tenant'];
 
-        // Bridge Log
-        $databl = json_decode($this->curl->simple_get($this->API.'/bridgelog.php'),1);
-        $bridge_log = $databl['Bridge_Log'];
+    //     // Bridge Log
+    //     $databl = json_decode($this->curl->simple_get($this->API.'/bridgelog.php'),1);
+    //     $bridge_log = $databl['Bridge_Log'];
 
-        // echo "<table border='1' >
-        //         <tr>
-        //             <th align=center>ID</th>
-        //             <th align=center>IP ADDRESS</th>
-        //             <th align=center>TIMESTAMP</th>
-        //             <th align=center>DATA</th></tr>";
+    //     // echo "<table border='1' >
+    //     //         <tr>
+    //     //             <th align=center>ID</th>
+    //     //             <th align=center>IP ADDRESS</th>
+    //     //             <th align=center>TIMESTAMP</th>
+    //     //             <th align=center>DATA</th></tr>";
 
-        //     foreach ($auth_session->result_array() as $as) {
-        //         var_dump($as['id']);
-        //     }
+    //     //     foreach ($auth_session->result_array() as $as) {
+    //     //         var_dump($as['id']);
+    //     //     }
 
-        // echo json_encode($auth_session);
-        // echo json_encode($auth_tenant);
-        echo json_encode($bridge_log);
-    }
+    //     // echo json_encode($auth_session);
+    //     // echo json_encode($auth_tenant);
+    //     echo json_encode($bridge_log);
+    // }
 
 
 }
