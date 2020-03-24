@@ -5,37 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-    <!-- place this before any script you want to calculate time -->
-    <?php $time_start = microtime(true);  ?>
+    <div class="container">
+        <form action="<?php echo $action; ?>" method="post">
+            <div class="form-group">
+                <label for="selectdata">Search Data</label>
+                <input class="form-control" type="" name="selectdata" id="selectdata">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" style="width: 100%" name="btnselect">Select</button>
+            </div>
+        </form>
 
-
+        <?php if (isset($bridgelog) and !empty($bridgelog)) {
+            foreach ($bridgelog['Bridge_Log'] as $bl) {
+                echo "~ ".$bl['id']." ~";
+                echo $bl['msisdn'];
+                echo $bl['called'];
+                echo $bl['lat'];
+                echo $bl['lng'];
+                echo $bl['area'];
+                echo $bl['ts'];
+                echo $bl['tenant'];
+            }
+            echo "<br><br>";
+            echo "<b>".$bridgelog['Time']."</b>";
+        } ?>
+    </div>
     <!-- sample script -->
-    <?php foreach ($bridgelog['Bridge_Log'] as $bl) {
-        echo "~ ".$bl['id']." ~";
-        echo $bl['msisdn'];
-        echo $bl['called'];
-        echo $bl['lat'];
-        echo $bl['lng'];
-        echo $bl['area'];
-        echo $bl['ts'];
-        echo $bl['tenant'];
 
-    } ?>
-
-    <br>
-    
-
-    <?php $time_end = microtime(true); ?>
-
-    <!-- dividing with 60 will give the execution time in minutes otherwise seconds -->
-    <?php $execution_time = round(($time_end - $time_start), 3);  ?>
-    <br>
-    <!-- execution time of the script -->
-    <?php echo '<b>Total Execution Time: '.$execution_time.' Second</b>'; ?>
-
-    <!-- if you get weird results, use number_format((float) $execution_time, 10)  -->
-    <?php echo "<b>".$bridgelog['Time']."</b>" ?>
 </body>
 </html>

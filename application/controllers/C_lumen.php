@@ -11,11 +11,7 @@ class C_lumen extends CI_Controller {
     // Menampilkan data LUMEN
     public function index() {
 
-        $data = array(
-           'bridgelog' => json_decode($this->curl->simple_get($this->API.'/bridgelog'),1)
-        );
-
-        $this->load->view('V_lumen',$data);
+        
     }
 
     public function selectdata() {
@@ -27,6 +23,103 @@ class C_lumen extends CI_Controller {
       );
 
       echo $authsession;
+    }
+
+    public function select() {
+        $btnselect = $this->input->post("btnselect");
+        if (isset($btnselect)) {
+            $select=$this->input->post('selectdata');
+            $data = array(
+               'bridgelog' => json_decode($this->curl->simple_get($this->API.'/bridgelog/'.$select),1),
+               'action' => "../C_lumen/select"
+            );
+
+            $this->load->view('V_lumen',$data);
+        } else {
+            $data['action'] = "../C_lumen/select";
+            $this->load->view("V_lumen",$data);
+        }
+    }
+
+    public function update() {
+        $btnupdate = $this->input->post("btninsert");
+        if (isset($btnupdate)) {
+            $data['msisdn']=$this->input->post('msisdn');
+            $data['called']=$this->input->post('called');
+            $data['lat']=$this->input->post('lat');
+            $data['lng']=$this->input->post('lng');
+            $data['area']=$this->input->post('area');
+            $data['ts']=$this->input->post('ts');
+            $data['tenant']=$this->input->post('tenant');
+            $data['jumlahupdate']=$this->input->post('jumlahupdate');
+
+            $insert =  $this->curl->simple_post($this->API.'/updatelumen', $data, array(CURLOPT_BUFFERSIZE => 10));
+            if ($insert) {
+                echo $insert;
+            } else {
+                echo "Failed";
+            }
+        } else {
+            $data['action'] = "../C_lumen/update";
+            $this->load->view("CRUD/V_update",$data);
+        }
+    }
+
+    public function insert() {
+        $btninsert = $this->input->post("btninsert");
+        if (isset($btninsert)) {
+            $data['msisdn']=$this->input->post('msisdn');
+            $data['called']=$this->input->post('called');
+            $data['lat']=$this->input->post('lat');
+            $data['lng']=$this->input->post('lng');
+            $data['area']=$this->input->post('area');
+            $data['ts']=$this->input->post('ts');
+            $data['tenant']=$this->input->post('tenant');
+            $data['jumlahinsert']=$this->input->post('jumlahinsert');
+
+            $insert =  $this->curl->simple_post($this->API.'/insertlumen', $data, array(CURLOPT_BUFFERSIZE => 10));
+            if ($insert) {
+                echo $insert;
+            } else {
+                echo "Failed";
+            }
+        } else {
+            $data['action'] = "../C_lumen/insert";
+            $this->load->view("CRUD/V_insert",$data);
+        }
+    }
+
+    public function delete() {
+        $btndelete = $this->input->post("btndelete");
+        if (isset($btndelete)) {
+            $jumlahdelete=$this->input->post('jumlahdelete');
+
+            $delete = $this->curl->simple_get($this->API.'/deletelumen/'.$jumlahdelete, array(CURLOPT_BUFFERSIZE => 10));
+            if ($delete) {
+                echo $delete;
+            } else {
+                echo "Failed";
+            }
+        } else {
+            $data['action'] = "../C_lumen/delete";
+            $this->load->view("CRUD/V_delete",$data);
+        }
+    }
+
+    public function search() {
+        $btncari = $this->input->post("btncari");
+        if (isset($btncari)) {
+            $cari=$this->input->post('caridata');
+            $data = array(
+               'bridgelog' => json_decode($this->curl->simple_get($this->API.'/searchlumen/'.$cari),1),
+               'action' => "../C_lumen/search"
+            );
+
+            $this->load->view('CRUD/V_search',$data);
+        } else {
+            $data['action'] = "../C_lumen/search";
+            $this->load->view("CRUD/V_search",$data);
+        }
     }
 }
 

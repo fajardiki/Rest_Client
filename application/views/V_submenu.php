@@ -22,26 +22,28 @@
 </head>
 <body>
 	<div class="container mt-4" align="center">
-		<div class="row">
-			
-		</div>
+		<br><br><br>
 		<div class="row mb-4">
-			<img class="img-fluid mx-auto d-block" width="500" src="assets/img/analisa-seo-indonesia.png">
-			<h1>ANALISA PERFORMA WEB SERVICE MENGGUNAKAN MICROFRAMEWORK LUMEN</h1>
-			<br><br>
+			<div class="col">
+				<h1 align="center"><?php echo $title ?></h1>
+			</div>
 		</div>
+		<br><br><br>
 		<div class="row">
 			<div class="col">
-				<a href="C_menu/native"><img class="img-fluid" id="logo" src="assets/img/php.png"></a>
+				<a class="btn btn-primary" href="<?php echo $select ?>">Select</a>
 			</div>
 			<div class="col">
-				<a href="C_menu/lumen"><img class="img-fluid" id="logo" src="assets/img/lumen.png"></a>
+				<a class="btn btn-primary" href="<?php echo $insert ?>">Insert</a>
 			</div>
 			<div class="col">
-				<a href="C_menu/slim"><img class="img-fluid" id="logo" src="assets/img/slim.jpg"></a>
+				<a class="btn btn-primary" href="<?php echo $update ?>">Update</a>
 			</div>
 			<div class="col">
-				<a href="C_menu/silex"><img class="img-fluid" id="logo" src="assets/img/silex.png"></a>
+				<a class="btn btn-primary" href="<?php echo $delete ?>">Delete</a>
+			</div>
+			<div class="col">
+				<a class="btn btn-primary" href="<?php echo $search ?>">Search</a>
 			</div>
 		</div>
 	</div>

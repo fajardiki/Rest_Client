@@ -9,52 +9,103 @@ class C_native extends CI_Controller {
     }
 
     // Menampilkan data NATIVE
-    public function index() {
 
-        $data = array(
-           'bridgelog' => json_decode($this->curl->simple_get($this->API.'/bridgelog.php'),1)
-        );
+    public function select() {
+        $btnselect = $this->input->post("btnselect");
+        if (isset($btnselect)) {
+            $select=$this->input->post('selectdata');
+            $data = array(
+               'bridgelog' => json_decode($this->curl->simple_get($this->API.'/bridgelog.php?limit='.$select),1),
+               'action' => "../C_native/select"
+            );
 
-        $this->load->view('V_native',$data);
+            $this->load->view('V_native',$data);
+        } else {
+            $data['action'] = "../C_native/select";
+            $this->load->view("V_native",$data);
+        }
     }
 
-    // public function selectdata() {
-    //     // $data = array(
-    //     //    'authsession' => ,
-    //     //    'authtenant' => json_decode($this->curl->simple_get($this->API.'/authtenant.php'),1),
-    //     //    'bridgelog' => json_decode($this->curl->simple_get($this->API.'/bridgelog.php'),1),
-    //     //    'bridgesession' => json_decode($this->curl->simple_get($this->API.'/bridgesession.php'),1),
-    //     //    'gpscontact' => json_decode($this->curl->simple_get($this->API.'/gpscontact.php'),1)
-    //     // );
+    public function update() {
+        $btnupdate = $this->input->post("btninsert");
+        if (isset($btnupdate)) {
+            $data['msisdn']=$this->input->post('msisdn');
+            $data['called']=$this->input->post('called');
+            $data['lat']=$this->input->post('lat');
+            $data['lng']=$this->input->post('lng');
+            $data['area']=$this->input->post('area');
+            $data['ts']=$this->input->post('ts');
+            $data['tenant']=$this->input->post('tenant');
+            $data['jumlahupdate']=$this->input->post('jumlahupdate');
 
-    //     // Auth Session
-    //     $dataas = json_decode($this->curl->simple_get($this->API.'/authsession.php'),1);
-    //     $auth_session = $dataas['Auth_Session'];
+            $insert =  $this->curl->simple_post($this->API.'/update.php', $data, array(CURLOPT_BUFFERSIZE => 10));
+            if ($insert) {
+                echo $insert;
+            } else {
+                echo "Failed";
+            }
+        } else {
+            $data['action'] = "../C_native/update";
+            $this->load->view("CRUD/V_update",$data);
+        }
+    }
 
-    //     // Auth Tenant
-    //     $dataat = json_decode($this->curl->simple_get($this->API.'/authtenant.php'),1);
-    //     $auth_tenant = $dataat['Auth_Tenant'];
+    public function insert() {
+        $btninsert = $this->input->post("btninsert");
+        if (isset($btninsert)) {
+            $data['msisdn']=$this->input->post('msisdn');
+            $data['called']=$this->input->post('called');
+            $data['lat']=$this->input->post('lat');
+            $data['lng']=$this->input->post('lng');
+            $data['area']=$this->input->post('area');
+            $data['ts']=$this->input->post('ts');
+            $data['tenant']=$this->input->post('tenant');
+            $data['jumlahinsert']=$this->input->post('jumlahinsert');
 
-    //     // Bridge Log
-    //     $databl = json_decode($this->curl->simple_get($this->API.'/bridgelog.php'),1);
-    //     $bridge_log = $databl['Bridge_Log'];
+            $insert =  $this->curl->simple_post($this->API.'/insert.php', $data, array(CURLOPT_BUFFERSIZE => 10));
+            if ($insert) {
+                echo $insert;
+            } else {
+                echo "Failed";
+            }
+        } else {
+            $data['action'] = "../C_native/insert";
+            $this->load->view("CRUD/V_insert",$data);
+        }
+    }
 
-    //     // echo "<table border='1' >
-    //     //         <tr>
-    //     //             <th align=center>ID</th>
-    //     //             <th align=center>IP ADDRESS</th>
-    //     //             <th align=center>TIMESTAMP</th>
-    //     //             <th align=center>DATA</th></tr>";
+    public function delete() {
+        $btndelete = $this->input->post("btndelete");
+        if (isset($btndelete)) {
+            $jumlahdelete=$this->input->post('jumlahdelete');
 
-    //     //     foreach ($auth_session->result_array() as $as) {
-    //     //         var_dump($as['id']);
-    //     //     }
+            $delete = $this->curl->simple_get($this->API.'/delete.php', array('jmldel'=>$jumlahdelete), array(CURLOPT_BUFFERSIZE => 10));
+            if ($delete) {
+                echo $delete;
+            } else {
+                echo "Failed";
+            }
+        } else {
+            $data['action'] = "../C_native/delete";
+            $this->load->view("CRUD/V_delete",$data);
+        }
+    }
 
-    //     // echo json_encode($auth_session);
-    //     // echo json_encode($auth_tenant);
-    //     echo json_encode($bridge_log);
-    // }
+    public function search() {
+        $btncari = $this->input->post("btncari");
+        if (isset($btncari)) {
+            $cari=$this->input->post('caridata');
+            $data = array(
+               'bridgelog' => json_decode($this->curl->simple_get($this->API.'/search.php?msisdn='.$cari),1),
+               'action' => "../C_native/search"
+            );
 
+            $this->load->view('CRUD/V_search',$data);
+        } else {
+            $data['action'] = "../C_native/search";
+            $this->load->view("CRUD/V_search",$data);
+        }
+    }
 
 }
 
