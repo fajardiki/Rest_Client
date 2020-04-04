@@ -46,6 +46,9 @@
 				<a class="btn btn-primary" href="<?php echo $search ?>">Search</a>
 			</div>
 		</div>
+		<footer style="position: fixed; bottom: 0; right: 0; background-color: #ff0000; padding: 10px; border-radius: 10px 0px 0px 0px;">
+                <a href="../C_menu">Dasboard</a>       
+        </footer>
 	</div>
 
 <!-- SCRIPT BOOTSTRAPE -->

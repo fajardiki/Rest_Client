@@ -9,20 +9,20 @@ class C_silex extends CI_Controller {
     }
 
     // Menampilkan data LUMEN
-    public function index() {
+    // public function index() {
         
-    }
+    // }
 
-    public function selectdata() {
-      $data = array(
-        'authsession' => json_decode($this->curl->simple_get($this->API.'/authsession'),1),
-        'authtenant' => json_decode($this->curl->simple_get($this->API.'/authtenant'),1),
-        'bridgelog' => json_decode($this->curl->simple_get($this->API.'/bridgelog'),1),
-        'bridgesession' => json_decode($this->curl->simple_get($this->API.'/bridgesession'),1)
-      );
+    // public function selectdata() {
+    //   $data = array(
+    //     'authsession' => json_decode($this->curl->simple_get($this->API.'/authsession'),1),
+    //     'authtenant' => json_decode($this->curl->simple_get($this->API.'/authtenant'),1),
+    //     'bridgelog' => json_decode($this->curl->simple_get($this->API.'/bridgelog'),1),
+    //     'bridgesession' => json_decode($this->curl->simple_get($this->API.'/bridgesession'),1)
+    //   );
 
-      echo $authsession;
-    }
+    //   echo $authsession;
+    // }
 
     public function select() {
         $btnselect = $this->input->post("btnselect");
@@ -30,12 +30,16 @@ class C_silex extends CI_Controller {
             $select=$this->input->post('selectdata');
             $data = array(
                'bridgelog' => json_decode($this->curl->simple_get($this->API.'/bridgelog/'.$select),1),
-               'action' => "../C_silex/select"
+               'action' => "../C_silex/select",
+               'ws' => "SILEX",
+               'link' => "../C_menu/silex"
             );
 
             $this->load->view('V_silex',$data);
         } else {
             $data['action'] = "../C_silex/select";
+            $data['ws'] = "SILEX";
+            $data['link'] = "../C_menu/silex";
             $this->load->view("V_silex",$data);
         }
     }
@@ -52,14 +56,20 @@ class C_silex extends CI_Controller {
             $data['tenant']=$this->input->post('tenant');
             $data['jumlahupdate']=$this->input->post('jumlahupdate');
 
-            $insert =  $this->curl->simple_post($this->API.'/updatesilex', $data, array(CURLOPT_BUFFERSIZE => 10));
-            if ($insert) {
-                echo $insert;
+            $update = json_decode($this->curl->simple_post($this->API.'/updatesilex', $data, array(CURLOPT_BUFFERSIZE => 10)),1);
+            if ($update) {
+                $data['action'] = "../C_silex/update";
+                $data['update'] = $update;
+                $data['ws'] = "SILEX";
+                $data['link'] = "../C_menu/silex";
+                $this->load->view("CRUD/V_update",$data);
             } else {
                 echo "Failed";
             }
         } else {
             $data['action'] = "../C_silex/update";
+            $data['ws'] = "SILEX";
+            $data['link'] = "../C_menu/silex";
             $this->load->view("CRUD/V_update",$data);
         }
     }
@@ -76,14 +86,20 @@ class C_silex extends CI_Controller {
             $data['tenant']=$this->input->post('tenant');
             $data['jumlahinsert']=$this->input->post('jumlahinsert');
 
-            $insert =  $this->curl->simple_post($this->API.'/insertsilex', $data, array(CURLOPT_BUFFERSIZE => 10));
+            $insert = json_decode($this->curl->simple_post($this->API.'/insertsilex', $data, array(CURLOPT_BUFFERSIZE => 10)),1);
             if ($insert) {
-                echo $insert;
+                $data['action'] = "../C_silex/insert";
+                $data['insert'] = $insert;
+                $data['ws'] = "SILEX";
+                $data['link'] = "../C_menu/silex";
+                $this->load->view("CRUD/V_insert",$data);
             } else {
                 echo "Failed";
             }
         } else {
             $data['action'] = "../C_silex/insert";
+            $data['ws'] = "SILEX";
+            $data['link'] = "../C_menu/silex";
             $this->load->view("CRUD/V_insert",$data);
         }
     }
@@ -93,14 +109,20 @@ class C_silex extends CI_Controller {
         if (isset($btndelete)) {
             $jumlahdelete=$this->input->post('jumlahdelete');
 
-            $delete = $this->curl->simple_get($this->API.'/deletesilex/'.$jumlahdelete, array(CURLOPT_BUFFERSIZE => 10));
+            $delete = json_decode($this->curl->simple_get($this->API.'/deletesilex/'.$jumlahdelete),1);
             if ($delete) {
-                echo $delete;
+                $data['action'] = "../C_silex/delete";
+                $data['ws'] = "SILEX";
+                $data['delete'] = $delete;
+                $data['link'] = "../C_menu/silex";
+                $this->load->view('CRUD/V_delete',$data);
             } else {
                 echo "Failed";
             }
         } else {
             $data['action'] = "../C_silex/delete";
+            $data['ws'] = "SILEX";
+            $data['link'] = "../C_menu/silex";
             $this->load->view("CRUD/V_delete",$data);
         }
     }
@@ -111,12 +133,16 @@ class C_silex extends CI_Controller {
             $cari=$this->input->post('caridata');
             $data = array(
                'bridgelog' => json_decode($this->curl->simple_get($this->API.'/searchsilex/'.$cari),1),
-               'action' => "../C_silex/search"
+               'action' => "../C_silex/search",
+               'ws' => "SILEX",
+               'link' => "../C_menu/silex"
             );
 
             $this->load->view('CRUD/V_search',$data);
         } else {
             $data['action'] = "../C_silex/search";
+            $data['ws'] = "SILEX";
+            $data['link'] = "../C_menu/silex";
             $this->load->view("CRUD/V_search",$data);
         }
     }

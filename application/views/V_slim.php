@@ -31,8 +31,18 @@
                 echo $bl['tenant'];
             }
             echo "<br><br>";
-            echo "<b>".$bridgelog['Time']."</b>";
         } ?>
+
+        <footer style="position: fixed; bottom: 0; background-color: #ff0000; padding: 10px; border-radius: 10px 10px 0px 0px;">
+            <?php if (isset($bridgelog) and !empty($bridgelog)) {
+                echo "<b>Execution Time : ".$bridgelog['time']."</b>";
+            } ?>
+        </footer>
+        <footer style="position: fixed; bottom: 0; right: 0; background-color: #ff0000; padding: 10px; border-radius: 10px 0px 0px 0px;">
+            <?php if (isset($ws) and !empty($ws)): ?>
+                <a href="../C_menu/slim"><?php echo "<b>".$ws."</b>"; ?></a>       
+            <?php endif ?>
+        </footer>
     </div>
 
 </body>

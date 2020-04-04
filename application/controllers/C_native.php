@@ -16,12 +16,16 @@ class C_native extends CI_Controller {
             $select=$this->input->post('selectdata');
             $data = array(
                'bridgelog' => json_decode($this->curl->simple_get($this->API.'/bridgelog.php?limit='.$select),1),
-               'action' => "../C_native/select"
+               'action' => "../C_native/select",
+               'ws' => "NATIVE",
+               'link' => "../C_menu/native"
             );
 
             $this->load->view('V_native',$data);
         } else {
             $data['action'] = "../C_native/select";
+            $data['ws'] = "NATIVE";
+            $data['link'] = "../C_menu/native";
             $this->load->view("V_native",$data);
         }
     }
@@ -38,14 +42,20 @@ class C_native extends CI_Controller {
             $data['tenant']=$this->input->post('tenant');
             $data['jumlahupdate']=$this->input->post('jumlahupdate');
 
-            $insert =  $this->curl->simple_post($this->API.'/update.php', $data, array(CURLOPT_BUFFERSIZE => 10));
-            if ($insert) {
-                echo $insert;
+            $update = json_decode($this->curl->simple_post($this->API.'/update.php', $data, array(CURLOPT_BUFFERSIZE => 10)),1);
+            if ($update) {
+                $data['action'] = "../C_native/update";
+                $data['update'] = $update;
+                $data['ws'] = "NATIVE";
+                $data['link'] = "../C_menu/native";
+                $this->load->view("CRUD/V_update",$data);
             } else {
                 echo "Failed";
             }
         } else {
             $data['action'] = "../C_native/update";
+            $data['ws'] = "NATIVE";
+            $data['link'] = "../C_menu/native";
             $this->load->view("CRUD/V_update",$data);
         }
     }
@@ -62,14 +72,20 @@ class C_native extends CI_Controller {
             $data['tenant']=$this->input->post('tenant');
             $data['jumlahinsert']=$this->input->post('jumlahinsert');
 
-            $insert =  $this->curl->simple_post($this->API.'/insert.php', $data, array(CURLOPT_BUFFERSIZE => 10));
+            $insert = json_decode($this->curl->simple_post($this->API.'/insert.php', $data, array(CURLOPT_BUFFERSIZE => 10)),1);
             if ($insert) {
-                echo $insert;
+                $data['action'] = "../C_native/insert";
+                $data['insert'] = $insert;
+                $data['ws'] = "NATIVE";
+                $data['link'] = "../C_menu/native";
+                $this->load->view("CRUD/V_insert",$data);
             } else {
                 echo "Failed";
             }
         } else {
             $data['action'] = "../C_native/insert";
+            $data['ws'] = "NATIVE";
+            $data['link'] = "../C_menu/native";
             $this->load->view("CRUD/V_insert",$data);
         }
     }
@@ -79,14 +95,20 @@ class C_native extends CI_Controller {
         if (isset($btndelete)) {
             $jumlahdelete=$this->input->post('jumlahdelete');
 
-            $delete = $this->curl->simple_get($this->API.'/delete.php', array('jmldel'=>$jumlahdelete), array(CURLOPT_BUFFERSIZE => 10));
+            $delete = json_decode($this->curl->simple_get($this->API.'/delete.php?jmldel='.$jumlahdelete),1);
             if ($delete) {
-                echo $delete;
+                $data['action'] = "../C_native/delete";
+                $data['delete'] = $delete;
+                $data['ws'] = "NATIVE";
+                $data['link'] = "../C_menu/native";
+                $this->load->view('CRUD/V_delete',$data);
             } else {
                 echo "Failed";
             }
         } else {
             $data['action'] = "../C_native/delete";
+            $data['ws'] = "NATIVE";
+            $data['link'] = "../C_menu/native";
             $this->load->view("CRUD/V_delete",$data);
         }
     }
@@ -97,12 +119,16 @@ class C_native extends CI_Controller {
             $cari=$this->input->post('caridata');
             $data = array(
                'bridgelog' => json_decode($this->curl->simple_get($this->API.'/search.php?msisdn='.$cari),1),
-               'action' => "../C_native/search"
+               'action' => "../C_native/search",
+               'ws' => "NATIVE",
+               'link' => "../C_menu/native"
             );
 
             $this->load->view('CRUD/V_search',$data);
         } else {
             $data['action'] = "../C_native/search";
+            $data['ws'] = "NATIVE";
+            $data['link'] = "../C_menu/native";
             $this->load->view("CRUD/V_search",$data);
         }
     }

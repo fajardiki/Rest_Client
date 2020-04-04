@@ -9,21 +9,21 @@ class C_lumen extends CI_Controller {
     }
 
     // Menampilkan data LUMEN
-    public function index() {
+    // public function index() {
 
         
-    }
+    // }
 
-    public function selectdata() {
-      $data = array(
-        'authsession' => json_decode($this->curl->simple_get($this->API.'/authsession'),1),
-        'authtenant' => json_decode($this->curl->simple_get($this->API.'/authtenant'),1),
-        'bridgelog' => json_decode($this->curl->simple_get($this->API.'/bridgelog'),1),
-        'bridgesession' => json_decode($this->curl->simple_get($this->API.'/bridgesession'),1)
-      );
+    // public function selectdata() {
+    //   $data = array(
+    //     'authsession' => json_decode($this->curl->simple_get($this->API.'/authsession'),1),
+    //     'authtenant' => json_decode($this->curl->simple_get($this->API.'/authtenant'),1),
+    //     'bridgelog' => json_decode($this->curl->simple_get($this->API.'/bridgelog'),1),
+    //     'bridgesession' => json_decode($this->curl->simple_get($this->API.'/bridgesession'),1)
+    //   );
 
-      echo $authsession;
-    }
+    //   echo $authsession;
+    // }
 
     public function select() {
         $btnselect = $this->input->post("btnselect");
@@ -31,12 +31,16 @@ class C_lumen extends CI_Controller {
             $select=$this->input->post('selectdata');
             $data = array(
                'bridgelog' => json_decode($this->curl->simple_get($this->API.'/bridgelog/'.$select),1),
-               'action' => "../C_lumen/select"
+               'action' => "../C_lumen/select",
+               'ws' => "LUMEN",
+               'link' => "../C_menu/lumen"
             );
 
             $this->load->view('V_lumen',$data);
         } else {
             $data['action'] = "../C_lumen/select";
+            $data['ws'] = "LUMEN";
+            $data['link'] = "../C_menu/lumen";
             $this->load->view("V_lumen",$data);
         }
     }
@@ -53,14 +57,20 @@ class C_lumen extends CI_Controller {
             $data['tenant']=$this->input->post('tenant');
             $data['jumlahupdate']=$this->input->post('jumlahupdate');
 
-            $insert =  $this->curl->simple_post($this->API.'/updatelumen', $data, array(CURLOPT_BUFFERSIZE => 10));
-            if ($insert) {
-                echo $insert;
+            $update = json_decode($this->curl->simple_post($this->API.'/updatelumen', $data, array(CURLOPT_BUFFERSIZE => 10)),1);
+            if ($update) {
+                $data['action'] = "../C_lumen/update";
+                $data['update'] = $update;
+                $data['ws'] = "LUMEN";
+                $data['link'] = "../C_menu/lumen";
+                $this->load->view("CRUD/V_update",$data);
             } else {
                 echo "Failed";
             }
         } else {
             $data['action'] = "../C_lumen/update";
+            $data['ws'] = "LUMEN";
+            $data['link'] = "../C_menu/lumen";
             $this->load->view("CRUD/V_update",$data);
         }
     }
@@ -77,14 +87,20 @@ class C_lumen extends CI_Controller {
             $data['tenant']=$this->input->post('tenant');
             $data['jumlahinsert']=$this->input->post('jumlahinsert');
 
-            $insert =  $this->curl->simple_post($this->API.'/insertlumen', $data, array(CURLOPT_BUFFERSIZE => 10));
+            $insert = json_decode($this->curl->simple_post($this->API.'/insertlumen', $data, array(CURLOPT_BUFFERSIZE => 10)),1);
             if ($insert) {
-                echo $insert;
+                $data['action'] = "../C_lumen/insert";
+                $data['insert'] = $insert;
+                $data['ws'] = "LUMEN";
+                $data['link'] = "../C_menu/lumen";
+                $this->load->view("CRUD/V_insert",$data);
             } else {
                 echo "Failed";
             }
         } else {
             $data['action'] = "../C_lumen/insert";
+            $data['ws'] = "LUMEN";
+            $data['link'] = "../C_menu/lumen";
             $this->load->view("CRUD/V_insert",$data);
         }
     }
@@ -94,14 +110,20 @@ class C_lumen extends CI_Controller {
         if (isset($btndelete)) {
             $jumlahdelete=$this->input->post('jumlahdelete');
 
-            $delete = $this->curl->simple_get($this->API.'/deletelumen/'.$jumlahdelete, array(CURLOPT_BUFFERSIZE => 10));
+            $delete = json_decode($this->curl->simple_get($this->API.'/deletelumen/'.$jumlahdelete),1);
             if ($delete) {
-                echo $delete;
+                $data['action'] = "../C_lumen/delete";
+                $data['delete'] = $delete;
+                $data['ws'] = "LUMEN";
+                $data['link'] = "../C_menu/lumen";
+                $this->load->view('CRUD/V_delete',$data);
             } else {
                 echo "Failed";
             }
         } else {
             $data['action'] = "../C_lumen/delete";
+            $data['ws'] = "LUMEN";
+            $data['link'] = "../C_menu/lumen";
             $this->load->view("CRUD/V_delete",$data);
         }
     }
@@ -112,12 +134,16 @@ class C_lumen extends CI_Controller {
             $cari=$this->input->post('caridata');
             $data = array(
                'bridgelog' => json_decode($this->curl->simple_get($this->API.'/searchlumen/'.$cari),1),
-               'action' => "../C_lumen/search"
+               'action' => "../C_lumen/search",
+               'ws' => "LUMEN",
+               'link' => "../C_menu/lumen"
             );
 
             $this->load->view('CRUD/V_search',$data);
         } else {
             $data['action'] = "../C_lumen/search";
+            $data['ws'] = "LUMEN";
+            $data['link'] = "../C_menu/lumen";
             $this->load->view("CRUD/V_search",$data);
         }
     }

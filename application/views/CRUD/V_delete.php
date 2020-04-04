@@ -16,6 +16,18 @@
 				<button class="btn btn-primary" style="width: 100%" name="btndelete">Delete</button>
 			</div>
 		</form>
+
+		<footer style="position: fixed; bottom: 0; background-color: #ff0000; padding: 10px; border-radius: 10px 10px 0px 0px;">
+            <?php if (isset($delete) and !empty($delete)) {
+            	echo "<b>Execution Time : ".$delete['time']."</b>";
+            } ?>
+        </footer>
+        
+        <footer style="position: fixed; bottom: 0; right: 0; background-color: #ff0000; padding: 10px; border-radius: 10px 0px 0px 0px;">
+            <?php if (isset($ws) and !empty($ws)): ?>
+                <a href="<?php echo $link ?>"><?php echo "<b>".$ws."</b>"; ?></a>       
+            <?php endif ?>
+        </footer>
 	</div>
 </body>
 </html>

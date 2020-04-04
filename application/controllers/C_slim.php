@@ -9,21 +9,21 @@ class C_slim extends CI_Controller {
     }
 
     // Menampilkan data Slim
-    public function index() {
+    // public function index() {
 
         
-    }
+    // }
 
-    public function selectdata() {
-      $data = array(
-        'authsession' => json_decode($this->curl->simple_get($this->API.'/authsession'),1),
-        'authtenant' => json_decode($this->curl->simple_get($this->API.'/authtenant'),1),
-        'bridgelog' => json_decode($this->curl->simple_get($this->API.'/bridgelog'),1),
-        'bridgesession' => json_decode($this->curl->simple_get($this->API.'/bridgesession'),1)
-      );
+    // public function selectdata() {
+    //   $data = array(
+    //     'authsession' => json_decode($this->curl->simple_get($this->API.'/authsession'),1),
+    //     'authtenant' => json_decode($this->curl->simple_get($this->API.'/authtenant'),1),
+    //     'bridgelog' => json_decode($this->curl->simple_get($this->API.'/bridgelog'),1),
+    //     'bridgesession' => json_decode($this->curl->simple_get($this->API.'/bridgesession'),1)
+    //   );
 
-      echo $authsession;
-    }
+    //   echo $authsession;
+    // }
 
     public function select() {
         $btnselect = $this->input->post("btnselect");
@@ -31,12 +31,16 @@ class C_slim extends CI_Controller {
             $select=$this->input->post('selectdata');
             $data = array(
                'bridgelog' => json_decode($this->curl->simple_get($this->API.'/bridgelog/'.$select),1),
-               'action' => "../C_slim/select"
+               'action' => "../C_slim/select",
+               'ws' => "SLIM",
+               'link' => "../C_menu/slim"
             );
 
             $this->load->view('V_slim',$data);
         } else {
             $data['action'] = "../C_slim/select";
+            $data['ws'] = "SLIM";
+            $data['link'] = "../C_menu/slim";
             $this->load->view("V_slim",$data);
         }
     }
@@ -53,14 +57,20 @@ class C_slim extends CI_Controller {
             $data['tenant']=$this->input->post('tenant');
             $data['jumlahupdate']=$this->input->post('jumlahupdate');
 
-            $insert =  $this->curl->simple_post($this->API.'/updateslim', $data, array(CURLOPT_BUFFERSIZE => 10));
-            if ($insert) {
-                echo $insert;
+            $update = json_decode($this->curl->simple_post($this->API.'/updateslim', $data, array(CURLOPT_BUFFERSIZE => 10)),1);
+            if ($update) {
+                $data['action'] = "../C_slim/update";
+                $data['update'] = $update;
+                $data['ws'] = "SLIM";
+                $data['link'] = "../C_menu/slim";
+                $this->load->view("CRUD/V_update",$data);
             } else {
                 echo "Failed";
             }
         } else {
             $data['action'] = "../C_slim/update";
+            $data['ws'] = "SLIM";
+            $data['link'] = "../C_menu/slim";
             $this->load->view("CRUD/V_update",$data);
         }
     }
@@ -77,14 +87,20 @@ class C_slim extends CI_Controller {
             $data['tenant']=$this->input->post('tenant');
             $data['jumlahinsert']=$this->input->post('jumlahinsert');
 
-            $insert =  $this->curl->simple_post($this->API.'/insertslim', $data, array(CURLOPT_BUFFERSIZE => 10));
+            $insert = json_decode($this->curl->simple_post($this->API.'/insertslim', $data, array(CURLOPT_BUFFERSIZE => 10)),1);
             if ($insert) {
-                echo $insert;
+                $data['action'] = "../C_slim/insert";
+                $data['insert'] = $insert;
+                $data['ws'] = "SLIM";
+                $data['link'] = "../C_menu/slim";
+                $this->load->view("CRUD/V_insert",$data);
             } else {
                 echo "Failed";
             }
         } else {
             $data['action'] = "../C_slim/insert";
+            $data['ws'] = "SLIM";
+            $data['link'] = "../C_menu/slim";
             $this->load->view("CRUD/V_insert",$data);
         }
     }
@@ -94,14 +110,20 @@ class C_slim extends CI_Controller {
         if (isset($btndelete)) {
             $jumlahdelete=$this->input->post('jumlahdelete');
 
-            $delete = $this->curl->simple_get($this->API.'/deleteslim/'.$jumlahdelete, array(CURLOPT_BUFFERSIZE => 10));
+            $delete = json_decode($this->curl->simple_get($this->API.'/deleteslim/'.$jumlahdelete),1);
             if ($delete) {
-                echo $delete;
+                $data['action'] = "../C_slim/delete";
+                $data['delete'] = $delete;
+                $data['ws'] = "SLIM";
+                $data['link'] = "../C_menu/slim";
+                $this->load->view('CRUD/V_delete',$data);
             } else {
                 echo "Failed";
             }
         } else {
             $data['action'] = "../C_slim/delete";
+            $data['ws'] = "SLIM";
+            $data['link'] = "../C_menu/slim";
             $this->load->view("CRUD/V_delete",$data);
         }
     }
@@ -112,12 +134,16 @@ class C_slim extends CI_Controller {
             $cari=$this->input->post('caridata');
             $data = array(
                'bridgelog' => json_decode($this->curl->simple_get($this->API.'/searchslim/'.$cari),1),
-               'action' => "../C_slim/search"
+               'action' => "../C_slim/search",
+               'ws' => "SLIM",
+               'link' => "../C_menu/slim"
             );
 
             $this->load->view('CRUD/V_search',$data);
         } else {
             $data['action'] = "../C_slim/search";
+            $data['ws'] = "SLIM";
+            $data['link'] = "../C_menu/slim";
             $this->load->view("CRUD/V_search",$data);
         }
     }

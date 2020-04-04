@@ -44,6 +44,17 @@
 				<button class="btn btn-primary" style="width: 100%" name="btninsert">Update data</button>
 			</div>
 		</form>
+
+		<footer style="position: fixed; bottom: 0; background-color: #ff0000; padding: 10px; border-radius: 10px 10px 0px 0px;">
+            <?php if (isset($update) and !empty($update)) {
+            	echo "<b>Execution Time : ".$update['time']."</b>";
+            } ?>
+        </footer>
+        <footer style="position: fixed; bottom: 0; right: 0; background-color: #ff0000; padding: 10px; border-radius: 10px 0px 0px 0px;">
+            <?php if (isset($ws) and !empty($ws)): ?>
+                <a href="<?php echo $link ?>"><?php echo "<b>".$ws."</b>"; ?></a>       
+            <?php endif ?>
+        </footer>
 	</div>
 </body>
 </html>
