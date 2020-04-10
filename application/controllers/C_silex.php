@@ -56,7 +56,7 @@ class C_silex extends CI_Controller {
             $data['tenant']=$this->input->post('tenant');
             $data['jumlahupdate']=$this->input->post('jumlahupdate');
 
-            $update = json_decode($this->curl->simple_post($this->API.'/updatesilex', $data, array(CURLOPT_BUFFERSIZE => 10)),1);
+            $update = json_decode($this->curl->simple_put($this->API.'/updatesilex', $data, array(CURLOPT_BUFFERSIZE => 10)),1);
             if ($update) {
                 $data['action'] = "../C_silex/update";
                 $data['update'] = $update;
@@ -109,7 +109,7 @@ class C_silex extends CI_Controller {
         if (isset($btndelete)) {
             $jumlahdelete=$this->input->post('jumlahdelete');
 
-            $delete = json_decode($this->curl->simple_get($this->API.'/deletesilex/'.$jumlahdelete),1);
+            $delete = json_decode($this->curl->simple_delete($this->API.'/deletesilex/'.$jumlahdelete),1);
             if ($delete) {
                 $data['action'] = "../C_silex/delete";
                 $data['ws'] = "SILEX";

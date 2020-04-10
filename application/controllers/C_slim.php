@@ -57,7 +57,7 @@ class C_slim extends CI_Controller {
             $data['tenant']=$this->input->post('tenant');
             $data['jumlahupdate']=$this->input->post('jumlahupdate');
 
-            $update = json_decode($this->curl->simple_post($this->API.'/updateslim', $data, array(CURLOPT_BUFFERSIZE => 10)),1);
+            $update = json_decode($this->curl->simple_put($this->API.'/updateslim', $data, array(CURLOPT_BUFFERSIZE => 10)),1);
             if ($update) {
                 $data['action'] = "../C_slim/update";
                 $data['update'] = $update;
@@ -110,7 +110,7 @@ class C_slim extends CI_Controller {
         if (isset($btndelete)) {
             $jumlahdelete=$this->input->post('jumlahdelete');
 
-            $delete = json_decode($this->curl->simple_get($this->API.'/deleteslim/'.$jumlahdelete),1);
+            $delete = json_decode($this->curl->simple_delete($this->API.'/deleteslim/'.$jumlahdelete),1);
             if ($delete) {
                 $data['action'] = "../C_slim/delete";
                 $data['delete'] = $delete;

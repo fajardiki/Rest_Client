@@ -47,7 +47,7 @@
 			</div>
 		</div>
 		<footer style="position: fixed; bottom: 0; right: 0; background-color: #ff0000; padding: 10px; border-radius: 10px 0px 0px 0px;">
-                <a href="../C_menu">Dasboard</a>       
+                <a href="../C_menu"><b style="color: #fff;">Dasboard</b></a>       
         </footer>
 	</div>
 

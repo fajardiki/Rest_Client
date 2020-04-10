@@ -17,15 +17,15 @@
 			</div>
 		</form>
 
-		<footer style="position: fixed; bottom: 0; background-color: #ff0000; padding: 10px; border-radius: 10px 10px 0px 0px;">
+		<footer style="position: fixed; left: 0; bottom: 0; background-color: #ff0000; padding: 10px; border-radius: 0px 10px 0px 0px;">
             <?php if (isset($delete) and !empty($delete)) {
-            	echo "<b>Execution Time : ".$delete['time']."</b>";
+            	echo "<b style='color: #fff;'>Execution Time : ".$delete['time']."</b>";
             } ?>
         </footer>
         
         <footer style="position: fixed; bottom: 0; right: 0; background-color: #ff0000; padding: 10px; border-radius: 10px 0px 0px 0px;">
             <?php if (isset($ws) and !empty($ws)): ?>
-                <a href="<?php echo $link ?>"><?php echo "<b>".$ws."</b>"; ?></a>       
+                <a href="<?php echo $link ?>"><?php echo "<b style='color: #fff;'>".$ws."</b>"; ?></a>       
             <?php endif ?>
         </footer>
 	</div>

@@ -11,7 +11,7 @@
     <div class="container">
         <form action="<?php echo $action; ?>" method="post">
             <div class="form-group">
-                <label for="selectdata">Search Data</label>
+                <label for="selectdata">Select Data</label>
                 <input class="form-control" type="" name="selectdata" id="selectdata">
             </div>
             <div class="form-group">
@@ -35,14 +35,14 @@
             
         } ?>
         
-        <footer style="position: fixed; bottom: 0; background-color: #ff0000; padding: 10px; border-radius: 10px 10px 0px 0px;">
+        <footer style="position: fixed; left: 0; bottom: 0; background-color: #ff0000; padding: 10px; border-radius: 0px 10px 0px 0px;">
             <?php if (isset($bridgelog) and !empty($bridgelog)) {
-                echo "<b>Execution Time : ".$bridgelog['time']."</b>";
+                echo "<b style='color: #fff;'>Execution Time : ".$bridgelog['time']."</b>";
             } ?>
         </footer>
         <footer style="position: fixed; bottom: 0; right: 0; background-color: #ff0000; padding: 10px; border-radius: 10px 0px 0px 0px;">
             <?php if (isset($ws) and !empty($ws)): ?>
-                <a href="../C_menu/native"><?php echo "<b>".$ws."</b>"; ?></a>       
+                <a href="../C_menu/native"><?php echo "<b style='color: #fff;'>".$ws."</b>"; ?></a>       
             <?php endif ?>
         </footer>
     </div>

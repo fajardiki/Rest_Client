@@ -37,7 +37,7 @@
 				<input class="form-control" type="" name="tenant" id="tenant">
 			</div>
 			<div class="form-group">
-				<label for="jumlahupdate">Jumlah insert</label>
+				<label for="jumlahupdate">Jumlah update</label>
 				<input class="form-control" type="" name="jumlahupdate" id="jumlahupdate">
 			</div>
 			<div class="form-group">
@@ -45,14 +45,14 @@
 			</div>
 		</form>
 
-		<footer style="position: fixed; bottom: 0; background-color: #ff0000; padding: 10px; border-radius: 10px 10px 0px 0px;">
+		<footer style="position: fixed; bottom: 0; left: 0; background-color: #ff0000; padding: 10px; border-radius: 0px 10px 0px 0px;">
             <?php if (isset($update) and !empty($update)) {
-            	echo "<b>Execution Time : ".$update['time']."</b>";
+            	echo "<b style='color: #fff;'>Execution Time : ".$update['time']."</b>";
             } ?>
         </footer>
         <footer style="position: fixed; bottom: 0; right: 0; background-color: #ff0000; padding: 10px; border-radius: 10px 0px 0px 0px;">
             <?php if (isset($ws) and !empty($ws)): ?>
-                <a href="<?php echo $link ?>"><?php echo "<b>".$ws."</b>"; ?></a>       
+                <a href="<?php echo $link ?>"><?php echo "<b style='color: #fff;'>".$ws."</b>"; ?></a>       
             <?php endif ?>
         </footer>
 	</div>
