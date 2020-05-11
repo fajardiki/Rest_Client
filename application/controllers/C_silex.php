@@ -7,7 +7,7 @@ class C_silex extends CI_Controller {
     function __construct() {
         parent::__construct();
         // $this->API="http://localhost:8000";
-        $this->API="http://localhost/GitHub/ws_silex/web/index.php";
+        $this->API="http://192.168.1.100/GitHub/ws_silex/web/index.php";
     }
 
     public function select() {
