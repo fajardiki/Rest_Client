@@ -45,11 +45,30 @@
 			</div>
 		</form>
 
-		<footer style="position: fixed; left: 0; bottom: 0; background-color: #ff0000; padding: 10px; border-radius: 0px 10px 0px 0px;">
-            <?php if (isset($insert) and !empty($insert)) {
-            	echo "<b style='color: #fff;'>Execution Time : ".$insert['time']."</b>";
-            } ?>
+		<?php if (isset($insert) and !empty($insert)) { ?>
+        <footer style="position: fixed; left: 0; bottom: 0; background-color: #ff0000; padding: 10px; border-radius: 0px 10px 0px 0px; opacity: 0.7">
+            <div class="container" style="color: #fff;">
+                <div class="row">
+                    <div class="col">
+                        <b>Web Service</b>
+                            <?php echo "<p>Execution Time : ".$insert['time']."</p>
+                                <p>Memory Usage : ".$insert['memory']."</p>
+                                <p>CPU Usage : ".$insert['cpu']."</p>" ?>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <b>Client</b>
+                        <p>Execution Time : <?php echo $time; ?> Second</p>
+                        <p>Memory Usage : {memory_usage}</p>
+                        <p>CPU Usage : <?php echo $cpu; ?></p>
+                    </div>
+                    
+                </div>
+            </div>
         </footer>
+        <?php } ?>
+        
         <footer style="position: fixed; bottom: 0; right: 0; background-color: #ff0000; padding: 10px; border-radius: 10px 0px 0px 0px;">
             <?php if (isset($ws) and !empty($ws)): ?>
                 <a href="<?php echo $link ?>"><?php echo "<b style='color: #fff;'>".$ws."</b>"; ?></a>       

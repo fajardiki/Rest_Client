@@ -18,23 +18,42 @@
 		</form>
 		<?php if (isset($bridgelog) and !empty($bridgelog)) {
 			foreach ($bridgelog['Bridge_Log'] as $bl) {
-		        echo "~ ".$bl['id']." ~";
-		        echo $bl['msisdn'];
-		        echo $bl['called'];
-		        echo $bl['lat'];
-		        echo $bl['lng'];
-		        echo $bl['area'];
-		        echo $bl['ts'];
-		        echo $bl['tenant'];
+		        echo "<b>[".$bl['id']."]</b>";
+                echo " ".$bl['msisdn'];
+                echo " ".$bl['called'];
+                echo " ".$bl['lat'];
+                echo " ".$bl['lng'];
+                echo " ".$bl['area'];
+                echo " ".$bl['ts'];
+                echo " ".$bl['tenant']."<br>";
 		    }
 		    echo "<br><br>";
 		} ?>
 
-		<footer style="position: fixed; left: 0; bottom: 0; background-color: #ff0000; padding: 10px; border-radius: 0px 10px 0px 0px;">
-            <?php if (isset($bridgelog) and !empty($bridgelog)) {
-                echo "<b style='color: #fff;'>Execution Time : ".$bridgelog['time']."</b>";
-            } ?>
+		<?php if (isset($bridgelog) and !empty($bridgelog)) { ?>
+        <footer style="position: fixed; left: 0; bottom: 0; background-color: #ff0000; padding: 10px; border-radius: 0px 10px 0px 0px; opacity: 0.7">
+            <div class="container" style="color: #fff;">
+                <div class="row">
+                    <div class="col">
+                        <b>Web Service</b>
+                            <?php echo "<p>Execution Time : ".$bridgelog['time']."</p>
+                                <p>Memory Usage : ".$bridgelog['memory']."</p>
+                                <p>CPU Usage : ".$bridgelog['cpu']."</p>" ?>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <b>Client</b>
+                        <p>Execution Time : <?php echo $time; ?> Second</p>
+                        <p>Memory Usage : {memory_usage}</p>
+                        <p>CPU Usage : <?php echo $cpu; ?></p>
+                    </div>
+                    
+                </div>
+            </div>
         </footer>
+        <?php } ?>
+
         <footer style="position: fixed; bottom: 0; right: 0; background-color: #ff0000; padding: 10px; border-radius: 10px 0px 0px 0px;">
             <?php if (isset($ws) and !empty($ws)): ?>
                 <a href="<?php echo $link ?>"><?php echo "<b style='color: #fff;'>".$ws."</b>"; ?></a>       
