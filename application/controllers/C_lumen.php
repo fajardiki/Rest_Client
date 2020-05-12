@@ -7,7 +7,7 @@ class C_lumen extends CI_Controller {
     function __construct() {
         parent::__construct();
         // $this->API="http://localhost:8000";
-        $this->API="http://192.168.1.100/GitHub/ws_lumen/public/index.php";
+        $this->API="http://192.168.1.12/GitHub/ws_lumen/public/index.php";
     }
 
     public function select() {
@@ -16,7 +16,7 @@ class C_lumen extends CI_Controller {
             $this->benchmark->mark('start_select');
 
             $select=$this->input->post('selectdata');
-            $response = json_decode($this->curl->simple_get($this->API.'/bridgelog/'.$select),1);
+            $response = json_decode($this->curl->simple_get($this->API.'/selectlumen/'.$select),1);
 
             $this->benchmark->mark('end_select');
             $data = array(

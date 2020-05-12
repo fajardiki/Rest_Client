@@ -7,7 +7,7 @@ class C_native extends CI_Controller {
     function __construct() {
         parent::__construct();
         // $this->API="http://localhost:8000";
-        $this->API="http://192.168.1.100/GitHub/ws_native";
+        $this->API="http://192.168.1.12/GitHub/ws_native";
     }
 
     // Menampilkan data NATIVE
@@ -18,7 +18,7 @@ class C_native extends CI_Controller {
             $this->benchmark->mark('start_select');
 
             $select=$this->input->post('selectdata');
-            $response = json_decode($this->curl->simple_get($this->API.'/bridgelog.php?limit='.$select),1);
+            $response = json_decode($this->curl->simple_get($this->API.'/selectnative.php?limit='.$select),1);
             $this->benchmark->mark('end_select');
             $data = array(
                'bridgelog' => $response,
@@ -52,7 +52,7 @@ class C_native extends CI_Controller {
             $data['tenant']=$this->input->post('tenant');
             $data['jumlahupdate']=$this->input->post('jumlahupdate');
 
-            $update = json_decode($this->curl->simple_put($this->API.'/update.php', $data, array(CURLOPT_BUFFERSIZE => 10)),1);
+            $update = json_decode($this->curl->simple_put($this->API.'/updatenative.php', $data, array(CURLOPT_BUFFERSIZE => 10)),1);
             $this->benchmark->mark('end_update');
 
             if ($update) {
@@ -91,7 +91,7 @@ class C_native extends CI_Controller {
             $data['tenant']=$this->input->post('tenant');
             $data['jumlahinsert']=$this->input->post('jumlahinsert');
 
-            $insert = json_decode($this->curl->simple_post($this->API.'/insert.php', $data, array(CURLOPT_BUFFERSIZE => 10)),1);
+            $insert = json_decode($this->curl->simple_post($this->API.'/insertnative.php', $data, array(CURLOPT_BUFFERSIZE => 10)),1);
 
             $this->benchmark->mark('end_insert');
             if ($insert) {
@@ -123,7 +123,7 @@ class C_native extends CI_Controller {
 
             $jumlahdelete=$this->input->post('jumlahdelete');
 
-            $delete = json_decode($this->curl->simple_delete($this->API.'/delete.php?jmldel='.$jumlahdelete),1);
+            $delete = json_decode($this->curl->simple_delete($this->API.'/deletenative.php?jmldel='.$jumlahdelete),1);
             $this->benchmark->mark('end_delete');
             if ($delete) {
                 $data = array(
@@ -153,7 +153,7 @@ class C_native extends CI_Controller {
             $this->benchmark->mark('start_search');
 
             $cari=$this->input->post('caridata');
-            $search = json_decode($this->curl->simple_get($this->API.'/search.php?msisdn='.$cari),1);
+            $search = json_decode($this->curl->simple_get($this->API.'/searchnative.php?msisdn='.$cari),1);
             
             $this->benchmark->mark('end_search');
 
