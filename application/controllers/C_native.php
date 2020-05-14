@@ -7,7 +7,7 @@ class C_native extends CI_Controller {
     function __construct() {
         parent::__construct();
         // $this->API="http://localhost:8000";
-        $this->API="http://192.168.1.12/GitHub/ws_native";
+        $this->API="http://192.168.1.100/GitHub/ws_native";
     }
 
     // Menampilkan data NATIVE
