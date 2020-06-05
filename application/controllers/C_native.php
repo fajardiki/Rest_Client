@@ -7,7 +7,7 @@ class C_native extends CI_Controller {
     function __construct() {
         parent::__construct();
         // $this->API="http://localhost:8000";
-        $this->API="http://192.168.1.100/GitHub/ws_native";
+        $this->API="http://localhost/GitHub/native/ws_native";
     }
 
     // Menampilkan data NATIVE
@@ -22,19 +22,19 @@ class C_native extends CI_Controller {
             $this->benchmark->mark('end_select');
             $data = array(
                'bridgelog' => $response,
-               'action' => "../C_native/select",
+               'action' => "C_native/select",
                'ws' => "NATIVE",
-               'link' => "../C_menu/native",
+               'link' => "C_menu/native",
                'time' => $this->benchmark->elapsed_time('start_select','end_select'),
                'cpu' => get_cpu_usage()."%"
             );
 
-            $this->load->view('V_native',$data);
+            $this->load->view('CRUD/V_select',$data);
         } else {
-            $data['action'] = "../C_native/select";
+            $data['action'] = "C_native/select";
             $data['ws'] = "NATIVE";
-            $data['link'] = "../C_menu/native";
-            $this->load->view("V_native",$data);
+            $data['link'] = "C_menu/native";
+            $this->load->view('CRUD/V_select',$data);
         }
     }
 
@@ -58,9 +58,9 @@ class C_native extends CI_Controller {
             if ($update) {
                 $data = array(
                    'update' => $update,
-                   'action' => "../C_native/update",
+                   'action' => "C_native/update",
                    'ws' => "NATIVE",
-                   'link' => "../C_menu/native",
+                   'link' => "C_menu/native",
                    'time' => $this->benchmark->elapsed_time('start_update','end_update'),
                    'cpu' => get_cpu_usage()."%"
                 );
@@ -70,9 +70,9 @@ class C_native extends CI_Controller {
                 echo "Failed";
             }
         } else {
-            $data['action'] = "../C_native/update";
+            $data['action'] = "C_native/update";
             $data['ws'] = "NATIVE";
-            $data['link'] = "../C_menu/native";
+            $data['link'] = "C_menu/native";
             $this->load->view("CRUD/V_update",$data);
         }
     }
@@ -97,9 +97,9 @@ class C_native extends CI_Controller {
             if ($insert) {
                 $data = array(
                    'insert' => $insert,
-                   'action' => "../C_native/insert",
+                   'action' => "C_native/insert",
                    'ws' => "NATIVE",
-                   'link' => "../C_menu/native",
+                   'link' => "C_menu/native",
                    'time' => $this->benchmark->elapsed_time('start_insert','end_insert'),
                    'cpu' => get_cpu_usage()."%"
                 );
@@ -109,9 +109,9 @@ class C_native extends CI_Controller {
                 echo "Failed";
             }
         } else {
-            $data['action'] = "../C_native/insert";
+            $data['action'] = "C_native/insert";
             $data['ws'] = "NATIVE";
-            $data['link'] = "../C_menu/native";
+            $data['link'] = "C_menu/native";
             $this->load->view("CRUD/V_insert",$data);
         }
     }
@@ -128,9 +128,9 @@ class C_native extends CI_Controller {
             if ($delete) {
                 $data = array(
                    'delete' => $delete,
-                   'action' => "../C_native/delete",
+                   'action' => "C_native/delete",
                    'ws' => "NATIVE",
-                   'link' => "../C_menu/native",
+                   'link' => "C_menu/native",
                    'time' => $this->benchmark->elapsed_time('start_delete','end_delete'),
                    'cpu' => get_cpu_usage()."%"
                 );
@@ -140,9 +140,9 @@ class C_native extends CI_Controller {
                 echo "Failed";
             }
         } else {
-            $data['action'] = "../C_native/delete";
+            $data['action'] = "C_native/delete";
             $data['ws'] = "NATIVE";
-            $data['link'] = "../C_menu/native";
+            $data['link'] = "C_menu/native";
             $this->load->view("CRUD/V_delete",$data);
         }
     }
@@ -159,18 +159,18 @@ class C_native extends CI_Controller {
 
             $data = array(
                'bridgelog' => $search,
-               'action' => "../C_native/search",
+               'action' => "C_native/search",
                'ws' => "NATIVE",
-               'link' => "../C_menu/native",
+               'link' => "C_menu/native",
                'time' => $this->benchmark->elapsed_time('start_search','end_search'),
                'cpu' => get_cpu_usage()."%"
             );
 
             $this->load->view('CRUD/V_search',$data);
         } else {
-            $data['action'] = "../C_native/search";
+            $data['action'] = "C_native/search";
             $data['ws'] = "NATIVE";
-            $data['link'] = "../C_menu/native";
+            $data['link'] = "C_menu/native";
             $this->load->view("CRUD/V_search",$data);
         }
     }

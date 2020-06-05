@@ -7,7 +7,7 @@ class C_slim extends CI_Controller {
     function __construct() {
         parent::__construct();
         // $this->API="http://localhost:8000";
-        $this->API="http://192.168.1.100/GitHub/ws_slim/public/index.php";
+        $this->API="http://localhost/GitHub/slim/slim-3.1.4/public/index.php";
     }
 
     public function select() {
@@ -21,19 +21,19 @@ class C_slim extends CI_Controller {
             $this->benchmark->mark('end_select');
             $data = array(
                'bridgelog' => $response,
-               'action' => "../C_slim/select",
+               'action' => "C_slim/select",
                'ws' => "SLIM",
-               'link' => "../C_menu/slim",
+               'link' => "C_menu/slim",
                'time' => $this->benchmark->elapsed_time('start_select','end_select'),
                'cpu' => get_cpu_usage()."%"
             );
 
-            $this->load->view('V_slim',$data);
+            $this->load->view('CRUD/V_select',$data);
         } else {
-            $data['action'] = "../C_slim/select";
+            $data['action'] = "C_slim/select";
             $data['ws'] = "SLIM";
-            $data['link'] = "../C_menu/slim";
-            $this->load->view("V_slim",$data);
+            $data['link'] = "C_menu/slim";
+            $this->load->view('CRUD/V_select',$data);
         }
     }
 
@@ -57,9 +57,9 @@ class C_slim extends CI_Controller {
             if ($update) {
                 $data = array(
                    'update' => $update,
-                   'action' => "../C_slim/update",
+                   'action' => "C_slim/update",
                    'ws' => "SLIM",
-                   'link' => "../C_menu/slim",
+                   'link' => "C_menu/slim",
                    'time' => $this->benchmark->elapsed_time('start_update','end_update'),
                    'cpu' => get_cpu_usage()."%"
                 );
@@ -69,9 +69,9 @@ class C_slim extends CI_Controller {
                 echo "Failed";
             }
         } else {
-            $data['action'] = "../C_slim/update";
+            $data['action'] = "C_slim/update";
             $data['ws'] = "SLIM";
-            $data['link'] = "../C_menu/slim";
+            $data['link'] = "C_menu/slim";
             $this->load->view("CRUD/V_update",$data);
         }
     }
@@ -96,9 +96,9 @@ class C_slim extends CI_Controller {
             if ($insert) {
                 $data = array(
                    'insert' => $insert,
-                   'action' => "../C_slim/insert",
+                   'action' => "C_slim/insert",
                    'ws' => "SLIM",
-                   'link' => "../C_menu/slim",
+                   'link' => "C_menu/slim",
                    'time' => $this->benchmark->elapsed_time('start_insert','end_insert'),
                    'cpu' => get_cpu_usage()."%"
                 );
@@ -108,9 +108,9 @@ class C_slim extends CI_Controller {
                 echo "Failed";
             }
         } else {
-            $data['action'] = "../C_slim/insert";
+            $data['action'] = "C_slim/insert";
             $data['ws'] = "SLIM";
-            $data['link'] = "../C_menu/slim";
+            $data['link'] = "C_menu/slim";
             $this->load->view("CRUD/V_insert",$data);
         }
     }
@@ -128,9 +128,9 @@ class C_slim extends CI_Controller {
             if ($delete) {
                 $data = array(
                    'delete' => $delete,
-                   'action' => "../C_slim/delete",
+                   'action' => "C_slim/delete",
                    'ws' => "SLIM",
-                   'link' => "../C_menu/slim",
+                   'link' => "C_menu/slim",
                    'time' => $this->benchmark->elapsed_time('start_delete','end_delete'),
                    'cpu' => get_cpu_usage()."%"
                 );
@@ -140,9 +140,9 @@ class C_slim extends CI_Controller {
                 echo "Failed";
             }
         } else {
-            $data['action'] = "../C_slim/delete";
+            $data['action'] = "C_slim/delete";
             $data['ws'] = "SLIM";
-            $data['link'] = "../C_menu/slim";
+            $data['link'] = "C_menu/slim";
             $this->load->view("CRUD/V_delete",$data);
         }
     }
@@ -158,18 +158,18 @@ class C_slim extends CI_Controller {
             $this->benchmark->mark('end_search');
             $data = array(
                'bridgelog' => $search,
-               'action' => "../C_slim/search",
+               'action' => "C_slim/search",
                'ws' => "SLIM",
-               'link' => "../C_menu/slim",
+               'link' => "C_menu/slim",
                'time' => $this->benchmark->elapsed_time('start_search','end_search'),
                'cpu' => get_cpu_usage()."%"
             );
 
             $this->load->view('CRUD/V_search',$data);
         } else {
-            $data['action'] = "../C_slim/search";
+            $data['action'] = "C_slim/search";
             $data['ws'] = "SLIM";
-            $data['link'] = "../C_menu/slim";
+            $data['link'] = "C_menu/slim";
             $this->load->view("CRUD/V_search",$data);
         }
     }

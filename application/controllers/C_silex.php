@@ -7,7 +7,7 @@ class C_silex extends CI_Controller {
     function __construct() {
         parent::__construct();
         // $this->API="http://localhost:8000";
-        $this->API="http://192.168.1.100/GitHub/ws_silex/web/index.php";
+        $this->API="http://localhost/GitHub/silex/silex-2.0.2/web/index.php";
     }
 
     public function select() {
@@ -21,19 +21,19 @@ class C_silex extends CI_Controller {
 
             $data = array(
                 'bridgelog' => $response,
-               'action' => "../C_silex/select",
+               'action' => "C_silex/select",
                'ws' => "SILEX",
-               'link' => "../C_menu/silex",
+               'link' => "C_menu/silex",
                'time' => $this->benchmark->elapsed_time('start_select','end_select'),
                'cpu' => get_cpu_usage()."%"
             );
 
-            $this->load->view('V_silex',$data);
+            $this->load->view('CRUD/V_select',$data);
         } else {
-            $data['action'] = "../C_silex/select";
+            $data['action'] = "C_silex/select";
             $data['ws'] = "SILEX";
-            $data['link'] = "../C_menu/silex";
-            $this->load->view("V_silex",$data);
+            $data['link'] = "C_menu/silex";
+            $this->load->view('CRUD/V_select',$data);
         }
     }
 
@@ -57,9 +57,9 @@ class C_silex extends CI_Controller {
             if ($update) {
                 $data = array(
                    'update' => $update,
-                   'action' => "../C_silex/update",
+                   'action' => "C_silex/update",
                    'ws' => "SILEX",
-                   'link' => "../C_menu/silex",
+                   'link' => "C_menu/silex",
                    'time' => $this->benchmark->elapsed_time('start_update','end_update'),
                    'cpu' => get_cpu_usage()."%"
                 );
@@ -68,9 +68,9 @@ class C_silex extends CI_Controller {
                 echo "Failed";
             }
         } else {
-            $data['action'] = "../C_silex/update";
+            $data['action'] = "C_silex/update";
             $data['ws'] = "SILEX";
-            $data['link'] = "../C_menu/silex";
+            $data['link'] = "C_menu/silex";
             $this->load->view("CRUD/V_update",$data);
         }
     }
@@ -96,9 +96,9 @@ class C_silex extends CI_Controller {
             if ($insert) {
                 $data = array(
                    'insert' => $insert,
-                   'action' => "../C_silex/insert",
+                   'action' => "C_silex/insert",
                    'ws' => "SILEX",
-                   'link' => "../C_menu/silex",
+                   'link' => "C_menu/silex",
                    'time' => $this->benchmark->elapsed_time('start_insert','end_insert'),
                    'cpu' => get_cpu_usage()."%"
                 );
@@ -108,9 +108,9 @@ class C_silex extends CI_Controller {
                 echo "Failed";
             }
         } else {
-            $data['action'] = "../C_silex/insert";
+            $data['action'] = "C_silex/insert";
             $data['ws'] = "SILEX";
-            $data['link'] = "../C_menu/silex";
+            $data['link'] = "C_menu/silex";
             $this->load->view("CRUD/V_insert",$data);
         }
     }
@@ -128,9 +128,9 @@ class C_silex extends CI_Controller {
             if ($delete) {
                 $data = array(
                    'delete' => $delete,
-                   'action' => "../C_silex/delete",
+                   'action' => "C_silex/delete",
                    'ws' => "SILEX",
-                   'link' => "../C_menu/silex",
+                   'link' => "C_menu/silex",
                    'time' => $this->benchmark->elapsed_time('start_delete','end_delete'),
                    'cpu' => get_cpu_usage()."%"
                 );
@@ -140,9 +140,9 @@ class C_silex extends CI_Controller {
                 echo "Failed";
             }
         } else {
-            $data['action'] = "../C_silex/delete";
+            $data['action'] = "C_silex/delete";
             $data['ws'] = "SILEX";
-            $data['link'] = "../C_menu/silex";
+            $data['link'] = "C_menu/silex";
             $this->load->view("CRUD/V_delete",$data);
         }
     }
@@ -158,18 +158,18 @@ class C_silex extends CI_Controller {
             $this->benchmark->mark('end_search');
             $data = array(
                'bridgelog' => $search,
-               'action' => "../C_silex/search",
+               'action' => "C_silex/search",
                'ws' => "SILEX",
-               'link' => "../C_menu/silex",
+               'link' => "C_menu/silex",
                'time' => $this->benchmark->elapsed_time('start_search','end_search'),
                'cpu' => get_cpu_usage()."%"
             );
 
             $this->load->view('CRUD/V_search',$data);
         } else {
-            $data['action'] = "../C_silex/search";
+            $data['action'] = "C_silex/search";
             $data['ws'] = "SILEX";
-            $data['link'] = "../C_menu/silex";
+            $data['link'] = "C_menu/silex";
             $this->load->view("CRUD/V_search",$data);
         }
     }

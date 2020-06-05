@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div class="container">
-		<form action="<?php echo $action; ?>" method="post">
+		<form action="<?php echo base_url($action); ?>" method="post">
 			<div class="form-group">
 				<label for="caridata">Search Data</label>
 				<input class="form-control" type="" name="caridata" id="caridata">
@@ -44,7 +44,7 @@
                 <div class="row">
                     <div class="col">
                         <b>Client</b>
-                        <p>Execution Time : <?php echo $time; ?> Second</p>
+                        <p>Execution Time : <?php echo $time; ?> Microsecond</p>
                         <p>Memory Usage : {memory_usage}</p>
                         <p>CPU Usage : <?php echo $cpu; ?></p>
                     </div>
@@ -56,7 +56,7 @@
 
         <footer style="position: fixed; bottom: 0; right: 0; background-color: #ff0000; padding: 10px; border-radius: 10px 0px 0px 0px;">
             <?php if (isset($ws) and !empty($ws)): ?>
-                <a href="<?php echo $link ?>"><?php echo "<b style='color: #fff;'>".$ws."</b>"; ?></a>       
+                <a href="<?php echo base_url($link) ?>"><?php echo "<b style='color: #fff;'>".$ws."</b>"; ?></a>       
             <?php endif ?>
         </footer>
 	</div>
