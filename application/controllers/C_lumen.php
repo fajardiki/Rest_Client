@@ -24,8 +24,7 @@ class C_lumen extends CI_Controller {
                'action' => 'C_lumen/select',
                'ws' => 'LUMEN',
                'link' => 'C_menu/lumen',
-               'time' => $this->benchmark->elapsed_time('start_select','end_select'),
-               'cpu' => get_cpu_usage().'%'
+               'time' => $this->benchmark->elapsed_time('start_select','end_select')
             );
 
             $this->load->view('CRUD/V_select',$data);
@@ -61,7 +60,7 @@ class C_lumen extends CI_Controller {
                    'ws' => 'LUMEN',
                    'link' => 'C_menu/lumen',
                    'time' => $this->benchmark->elapsed_time('start_update','end_update'),
-                   'cpu' => get_cpu_usage().'%'
+                   
                 );
 
                 $this->load->view('CRUD/V_update',$data);
@@ -100,7 +99,7 @@ class C_lumen extends CI_Controller {
                    'ws' => 'LUMEN',
                    'link' => 'C_menu/lumen',
                    'time' => $this->benchmark->elapsed_time('start_insert','end_insert'),
-                   'cpu' => get_cpu_usage().'%'
+                   
                 );
 
                 $this->load->view('CRUD/V_insert',$data);
@@ -132,7 +131,7 @@ class C_lumen extends CI_Controller {
                    'ws' => 'LUMEN',
                    'link' => 'C_menu/lumen',
                    'time' => $this->benchmark->elapsed_time('start_delete','end_delete'),
-                   'cpu' => get_cpu_usage().'%'
+                   
                 );
     
                 $this->load->view('CRUD/V_delete',$data);
@@ -161,7 +160,7 @@ class C_lumen extends CI_Controller {
                'ws' => 'LUMEN',
                'link' => 'C_menu/lumen',
                'time' => $this->benchmark->elapsed_time('start_search','end_search'),
-               'cpu' => get_cpu_usage().'%'
+               
             );
 
             $this->load->view('CRUD/V_search',$data);

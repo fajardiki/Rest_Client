@@ -48,20 +48,19 @@
 		<?php if (isset($update) and !empty($update)) { ?>
         <footer style="position: fixed; left: 0; bottom: 0; background-color: #ff0000; padding: 10px; border-radius: 0px 10px 0px 0px; opacity: 0.7">
             <div class="container" style="color: #fff;">
+            	<p>Jumlah request : <?php echo $update['req']; ?></p>
                 <div class="row">
                     <div class="col">
                         <b>Web Service</b>
                             <?php echo "<p>Execution Time : ".$update['time']."</p>
-                                <p>Memory Usage : ".$update['memory']."</p>
-                                <p>CPU Usage : ".$update['cpu']."</p>" ?>
+                                <p>Memory Usage : ".$update['memory']."</p>" ?>
                     </div> 
                 </div>
                 <div class="row">
                     <div class="col">
                         <b>Client</b>
-                        <p>Execution Time : <?php echo $time; ?> Microsecond</p>
+                        <p>Execution Time : <?php echo $time; ?> Second</p>
                         <p>Memory Usage : {memory_usage}</p>
-                        <p>CPU Usage : <?php echo $cpu; ?></p>
                     </div>
                     
                 </div>
