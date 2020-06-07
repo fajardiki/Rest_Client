@@ -7,7 +7,7 @@ class C_lumen extends CI_Controller {
     function __construct() {
         parent::__construct();
         // $this->API="http://localhost:8000";
-        $this->API='http://localhost/GitHub/lumen/lumen-5.5.2/public/index.php';
+        $this->API='http://192.168.1.10/GitHub/lumen/lumen-5.5.2/public/index.php';
     }
 
     public function select() {
