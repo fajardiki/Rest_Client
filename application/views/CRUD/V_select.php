@@ -27,29 +27,27 @@
           <table class="table table-bordered table-hover">
           <tbody>
             <?php echo json_encode($bridgelog['Bridge_Log'],JSON_UNESCAPED_UNICODE); ?>
-            <!-- <?php foreach ($bridgelog['Bridge_Log'] as $bl => &$val) { ?>
-              <tr><td><?php echo $val['id']; ?></td><td><?php echo $val['msisdn']; ?></td>
-                <td><?php echo $val['called']; ?></td><td><?php echo $val['lat']; ?></td><td><?php echo $val['lng']; ?></td><td><?php echo $val['area']; ?></td><td><?php echo $val['ts']; ?></td><td><?php echo $val['tenant']; ?></td></tr>
-            <?php } ?> -->
+            <!-- <?php foreach ($bridgelog['Bridge_Log'] as $bl => &$val) { 
+              echo '<tr><td>'.$val['id'].'</td><td>'.$val['msisdn'].'</td>
+                <td>'.$val['called'].'</td><td>'.$val['lat'].'</td><td>'.$val['lng'].'</td><td>'.$val['area'].'</td><td>'.$val['ts'].'</td><td>'.$val['tenant'].'</td></tr>';
+            } ?> -->
           </tbody></table>
 
             <footer style="position: fixed; left: 0; bottom: 0; background-color: #ff0000; padding: 10px; border-radius: 0px 10px 0px 0px; opacity: 0.7">
                 <div class="container" style="color: #fff;">
-                    <!-- <p>Jumlah request : <?php echo $bridgelog['request']; ?></p> -->
+                    <p>Jumlah request : <?php echo $bridgelog['req']; ?></p>
                     <div class="row">
                         <div class="col">
                             <b>Web Service</b>
                                 <?php echo "<p>Execution Time : ".$bridgelog['time']."</p>
-                                <p>Memory Usage : ".$bridgelog['memory']."</p>
-                                <p>CPU Usage : ".$bridgelog['cpu']."</p>" ?>
+                                <p>Memory Usage : ".$bridgelog['memory']."</p>" ?>
                         </div> 
                     </div>
                     <div class="row">
                         <div class="col">
                             <b>Client</b>
-                            <p>Execution Time : <?php echo $time; ?> Microsecond</p>
+                            <p>Execution Time : <?php echo $time; ?> Second</p>
                             <p>Memory Usage : {memory_usage}</p>
-                            <p>CPU Usage : <?php echo $cpu; ?></p>
                         </div>
                         
                     </div>
